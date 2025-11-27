@@ -1,11 +1,20 @@
 const express = require("express");
 const app = express();
 const {posts} = require("./mockdata/posts.json");
+const dotenv = require('dotenv');
+const mongoose = require("mongoose");
+dotenv.config();
+
+const port = process.env.PORT || 3200;
+
+const conn_uri = process.env.CONN_URI;
+
+mongoose.connect(conn_uri).then(()=> console.log(`DB is Connected`)).catch((err)=>console.log(`oops! something went wrong`, err))
 
 app.set("view engine", "pug");
 app.set("views", "./views");
 
-const port = 3200;
+// const port = 3200;
 
 app.use(express.static("public"));
 app.use(express.json());
