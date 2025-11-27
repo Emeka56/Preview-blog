@@ -1,0 +1,22 @@
+header.header 
+    .header-logo LOGO
+    nav.navigation 
+        .nav-links 
+            a.link(href="/") HOME
+            a.link(href="/about") ABOUT
+            a.link(href="/about") CONTACT
+
+section.hero(style=`background-image:url("${image}") `)
+    - let desc = description && (description.length > 60? description.substr(0, 51)+ "..." : description)
+    .hero-layout
+        h1 Welcome To Preview Blog 
+        .hero-desc=tags
+        .hero-title
+            p=description && desc
+            if link 
+                //- a._link(href=link.ref)=link.text
+                a._link(href=`post/1`)=link.text
+                //- a(href=`post/${post.id}`)=link.text
+
+        //- 
+

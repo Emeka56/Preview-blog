@@ -1,0 +1,16 @@
+extends ../layouts/layout.pug 
+block content
+    h3 See All Our latest Blog Posts 
+    .container 
+        each post in posts 
+            - let desc = post.content.length > 200? post.content.substr(0, 109)+"..." : post.content;
+            a(href=`post/${post.id}`)
+                .post
+                    .post-image-container 
+                        img.post-image(src=post.image alt="images")
+                    .content 
+                        h3.post-title=post.tags
+                        p.post-desc=desc
+                        span.see-more Read more
+                        //- .see=link 
+                        //- a(href="post/${post.id}")=link.text
